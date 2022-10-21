@@ -549,7 +549,7 @@ if __name__ == "__main__":
     rungroup.add_option("--nameservers", metavar="8.8.8.8#5053 or 4.2.2.1#5053#tcp or 2001:4860:4860::8888",
                         default='8.8.8.8', action="store",
                         help='A comma separated list of alternative DNS servers to use with proxied requests. Nameservers can have either IP or IP#PORT format. A randomly selected server from the list will be used for proxy requests when provided with multiple servers. By default, the tool uses Google\'s public DNS server 8.8.8.8 when running in IPv4 mode and 2001:4860:4860::8888 when running in IPv6 mode.')
-    rungroup.add_option("-i", "--interface", metavar="127.0.0.1 or ::1", default="127.0.0.1", action="store",
+    rungroup.add_option("-i", "--interface", metavar="127.0.0.1:5080 or ::1", default="127.0.0.1:5080", action="store",
                         help='Define an interface to use for the DNS listener. By default, the tool uses 127.0.0.1 for IPv4 mode and ::1 for IPv6 mode.')
     rungroup.add_option("-t", "--tcp", action="store_true", default=False,
                         help="Use TCP DNS proxy instead of the default UDP.")
@@ -587,7 +587,7 @@ if __name__ == "__main__":
     # Adjust defaults for IPv6
     if options.ipv6:
         print "[*] Using IPv6 mode."
-        if options.interface == "127.0.0.1":
+        if options.interface == "127.0.0.1:5080":
             options.interface = "::1"
 
         if options.nameservers == "8.8.8.8":
