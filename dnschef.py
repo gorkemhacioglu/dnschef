@@ -334,7 +334,7 @@ class DNSHandler():
             return False
 
     # Obtain a response from a real DNS server.
-    def proxyrequest(self, request, host, port="53", protocol="udp"):
+    def proxyrequest(self, request, host, port="5053", protocol="udp"):
         reply = None
         try:
             if self.server.ipv6:
@@ -444,7 +444,7 @@ class ThreadedTCPServer(SocketServer.ThreadingMixIn, SocketServer.TCPServer):
 
 
 # Initialize and start the DNS Server
-def start_cooking(interface, nametodns, nameservers, tcp=False, ipv6=False, port="53", embeddedipdomain=None,
+def start_cooking(interface, nametodns, nameservers, tcp=False, ipv6=False, port="5053", embeddedipdomain=None,
                   logfile=None, loghttp=None, noproxy=False):
     try:
 
@@ -546,7 +546,7 @@ if __name__ == "__main__":
     rungroup.add_option("--noproxy", action="store_true", default=False, help="*** Disable proxying unknown names.")
     rungroup.add_option("--hosts", action="store", help="*** Specify a hosts file for additional fake resolution.")
 
-    rungroup.add_option("--nameservers", metavar="8.8.8.8#53 or 4.2.2.1#53#tcp or 2001:4860:4860::8888",
+    rungroup.add_option("--nameservers", metavar="8.8.8.8#5053 or 4.2.2.1#5053#tcp or 2001:4860:4860::8888",
                         default='8.8.8.8', action="store",
                         help='A comma separated list of alternative DNS servers to use with proxied requests. Nameservers can have either IP or IP#PORT format. A randomly selected server from the list will be used for proxy requests when provided with multiple servers. By default, the tool uses Google\'s public DNS server 8.8.8.8 when running in IPv4 mode and 2001:4860:4860::8888 when running in IPv6 mode.')
     rungroup.add_option("-i", "--interface", metavar="127.0.0.1 or ::1", default="127.0.0.1", action="store",
@@ -554,7 +554,7 @@ if __name__ == "__main__":
     rungroup.add_option("-t", "--tcp", action="store_true", default=False,
                         help="Use TCP DNS proxy instead of the default UDP.")
     rungroup.add_option("-6", "--ipv6", action="store_true", default=False, help="Run in IPv6 mode.")
-    rungroup.add_option("-p", "--port", action="store", metavar="53", default="53",
+    rungroup.add_option("-p", "--port", action="store", metavar="5053", default="5053",
                         help='Port number to listen for DNS requests.')
     rungroup.add_option("-q", "--quiet", action="store_false", dest="verbose", default=True, help="Don't show headers.")
     parser.add_option_group(rungroup)
@@ -581,7 +581,7 @@ if __name__ == "__main__":
         sys.exit(0)
 
     # Notify user about alternative listening port
-    if options.port != "53":
+    if options.port != "5053":
         print "[*] Listening on an alternative port %s" % options.port
 
     # Adjust defaults for IPv6

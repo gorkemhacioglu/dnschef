@@ -39,7 +39,7 @@ Running DNSChef
 
 DNSChef is a cross-platform application developed in Python which should run on most platforms which have a Python interpreter. You can use the supplied *dnschef.exe* executable to run it on Windows hosts without installing a Python interpreter. This guide will concentrate on Unix environments; however, all of the examples below were tested to work on Windows as well.
 
-Let's get a taste of DNSChef with its most basic monitoring functionality. Execute the following command as root (required to start a server on port 53):
+Let's get a taste of DNSChef with its most basic monitoring functionality. Execute the following command as root (required to start a server on port 5053):
 
     # ./dnschef.py
         
@@ -333,7 +333,7 @@ DNS protocol can be used over UDP (default) or TCP. DNSChef implements a TCP mod
 Internal architecture
 =====================
 
-Here is some information on the internals in case you need to adapt the tool for your needs. DNSChef is built on top of the SocketServer module and uses threading to help process multiple requests simultaneously. The tool is designed to listen on TCP or UDP ports (default is port 53) for incoming requests and forward those requests when necessary to a real DNS server over UDP.
+Here is some information on the internals in case you need to adapt the tool for your needs. DNSChef is built on top of the SocketServer module and uses threading to help process multiple requests simultaneously. The tool is designed to listen on TCP or UDP ports (default is port 5053) for incoming requests and forward those requests when necessary to a real DNS server over UDP.
 
 The excellent [dnslib library](https://bitbucket.org/paulc/dnslib/wiki/Home) is used to dissect and reassemble DNS packets. It is particularly useful when generating response packets based on queries. [IPy](https://github.com/haypo/python-ipy/) is used for IPv6 addresses manipulation. Both libraries come bundled with DNSChef to ease installation.
 
