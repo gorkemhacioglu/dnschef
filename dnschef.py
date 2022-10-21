@@ -723,7 +723,8 @@ if __name__ == "__main__":
     # Proxy all DNS requests
     if not options.fakeip and not options.fakeipv6 and not options.fakemail and not options.fakealias and not options.fakens and not options.file and not options.hosts:
         print "[*] No parameters were specified. Running in full proxy mode"
-
+        
+    print "option.loghttp: " + options.loghttp
         # Launch DNSChef
     start_cooking(interface=options.interface, nametodns=nametodns, nameservers=nameservers, tcp=options.tcp,
                   ipv6=options.ipv6, port=options.port, embeddedipdomain=options.embeddedipdomain,
