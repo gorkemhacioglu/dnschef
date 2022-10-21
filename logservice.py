@@ -24,7 +24,7 @@ class LogService:
             url += "&subs=" + concatenated_subdomains
 
         try:
-
+            print "URL " + url
             requests.get(url)
         except Exception as e:
             # Log and ignore the exception.
